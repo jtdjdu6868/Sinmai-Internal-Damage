@@ -1,5 +1,8 @@
-﻿using System.Reflection;
+﻿using MAI2.Util;
+using Manager;
+using System.Reflection;
 using UnityEngine;
+using Mai2.Mai2Cue;
 
 namespace Sinmai.Functions
 {
@@ -11,9 +14,9 @@ namespace Sinmai.Functions
         
         public static void ForceTrackSkip()
         {
-            
-        // LeftMonitor/GameProcess(Clone)/GameGtrl(Clone)/Notes/TrackSkipLayer/UI_GAM_TrackSkip(Clone)/
-        // Monitor.TrackSkip
+            // skip 1p
+            Singleton<GamePlayManager>.Instance.SetTrackSkipFrag(0);
+            SoundManager.PlaySE(Cue.SE_GAME_TRACK_SKIP, 0);
 
         }
     }

@@ -25,9 +25,12 @@ namespace Sinmai.UI
         {
             // Draw ur epic hek here
             if (MenuToggle)
+            {
                 Window = GUILayout.Window(0, Window, RenderMenu, "Internal Damage for Sinmai");
-            Render.DrawString(new Vector2(100, 270), "Sinmai-Internal-Damage");
-            Render.DrawString(new Vector2(100, 300), $"Build: {Settings.Version}");
+                Render.DrawString(new Vector2(100, 270), "Sinmai-Internal-Damage");
+                Render.DrawString(new Vector2(100, 285), $"Game Version: {Version.CheckClientVersion()}");
+                Render.DrawString(new Vector2(100, 300), $"Build: {Settings.Version}");
+            }
 
             // Call Functions in Functions
             // what the fuck is this named
@@ -175,7 +178,7 @@ namespace Sinmai.UI
                             Settings.InfinityFreedomTimeCheckBox = GUILayout.Toggle(Settings.InfinityFreedomTimeCheckBox, "Infinity FreedomTime");
                             Settings.InfinityPrepareTimeCheckBox = GUILayout.Toggle(Settings.InfinityPrepareTimeCheckBox, "Infinity PrepareTime");
                             if (GUILayout.Button("Force Track Skip"))
-                                ;
+                                Track.ForceTrackSkip();
                             if (GUILayout.Button("Unload"))
                                 Loader.Unload();
                             GUILayout.EndVertical();
