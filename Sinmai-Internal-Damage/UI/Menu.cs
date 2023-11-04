@@ -28,7 +28,7 @@ namespace Sinmai.UI
             {
                 Window = GUILayout.Window(0, Window, RenderMenu, "Internal Damage for Sinmai");
                 Render.DrawString(new Vector2(100, 270), "Sinmai-Internal-Damage");
-                Render.DrawString(new Vector2(100, 285), $"Game Version: {Version.CheckClientVersion()}");
+                Render.DrawString(new Vector2(100, 285), $"Game Version: {Settings.GameVersion}");
                 Render.DrawString(new Vector2(100, 300), $"Build: {Settings.Version}");
             }
 

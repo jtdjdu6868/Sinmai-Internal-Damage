@@ -3,6 +3,7 @@
     class Settings
     {
         public static string Version = "b20231016-A";
+        public static string GameVersion = Sinmai.Functions.Version.CheckClientVersion();
 
         public static int MainToolbarInt = 0;
         public static string[] MainToolbarStrings = { "Legit", "Skins", "Misc" };

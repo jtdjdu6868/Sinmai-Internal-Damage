@@ -1,4 +1,5 @@
 ﻿using MAI2System;
+using System.Reflection;
 
 namespace Sinmai.Functions
 {
@@ -6,7 +7,9 @@ namespace Sinmai.Functions
     {
         public static string CheckClientVersion()
         {
-            return ConstParameter.GameIDStr + " " + ConstParameter.NowGameVersion;
+            var GameIDStr = typeof(ConstParameter).GetField("GameIDStr", BindingFlags.Public | BindingFlags.Static).GetValue(null);
+            var NowGameVersion = typeof(ConstParameter).GetField("NowGameVersion", BindingFlags.Public | BindingFlags.Static).GetValue(null);
+            return GameIDStr + " " + NowGameVersion;
         }
     }
 }
