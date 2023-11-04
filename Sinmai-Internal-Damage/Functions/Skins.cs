@@ -21,14 +21,18 @@ namespace Sinmai.Functions
         public static Sprite titleBg = Resources.Load<Sprite>("Process/Common/Sprites/UpperMonitor/UI_CMN_Shougou_" + Settings.TitleType);
         public static Sprite pass = Resources.Load<Sprite>("Process/Common/Sprites/UpperMonitor/UI_CMN_DXPass_" + Settings.DXPassType);
         public static string userName = Settings.NameValue;
+        public static UserInformationController userInformationController = null;
         
         private static UserInformationController getUserInformationController()
         {
-            UserInformationController UserInformationController = GameObject
+            if (userInformationController == null)
+            {
+                userInformationController = GameObject
                 .Find("Sub/UI_UserInformation/UI_UserData/")
                 .GetComponent<UserInformationController>();
+            }
 
-            return UserInformationController;
+            return userInformationController;
         }
 
         // public static void NameChanger()
