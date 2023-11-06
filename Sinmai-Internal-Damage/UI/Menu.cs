@@ -27,9 +27,10 @@ namespace Sinmai.UI
             if (MenuToggle)
             {
                 Window = GUILayout.Window(0, Window, RenderMenu, "Internal Damage for Sinmai");
-                Render.DrawString(new Vector2(100, 270), "Sinmai-Internal-Damage");
-                Render.DrawString(new Vector2(100, 285), $"Game Version: {Settings.GameVersion}");
-                Render.DrawString(new Vector2(100, 300), $"Build: {Settings.Version}");
+                int draw_y = (int)(Screen.height * 0.234375);
+                Render.DrawString(new Vector2(0, draw_y), "Sinmai-Internal-Damage", false);
+                Render.DrawString(new Vector2(0, draw_y + 15), $"Game Version: {Settings.GameVersion}", false);
+                Render.DrawString(new Vector2(0, draw_y + 30), $"Build: {Settings.Version}", false);
             }
 
             // Call Functions in Functions
