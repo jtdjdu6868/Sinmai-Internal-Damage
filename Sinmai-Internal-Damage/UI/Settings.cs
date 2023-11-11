@@ -2,7 +2,7 @@
 {
     class Settings
     {
-        public static string Version = "b20231016-A";
+        public static string Version = "b20231111-A";
         public static string GameVersion = Sinmai.Functions.Version.CheckClientVersion();
 
         public static int MainToolbarInt = 0;
@@ -12,7 +12,7 @@
         // Legit Autoplay
         public static bool LegitAutoPlayCheckBox = false;
         public static int LegitMethodInt = 0;
-        public static string[] LegitMethod = {"Opposite", "Random Cycle", "Force Random"};
+        public static string[] LegitMethod = {"Weighted", "Native"};
         public static float CriticalValue = 100.0f;
         public static float PerfectValue = 0.0f;
         public static float GreatValue = 0.0f;

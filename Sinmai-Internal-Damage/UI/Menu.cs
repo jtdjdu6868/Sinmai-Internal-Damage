@@ -1,6 +1,7 @@
 ﻿using Sinmai.Functions;
 using Sinmai.Helper;
 using UnityEngine;
+using Manager;
 
 namespace Sinmai.UI
 {
@@ -34,10 +35,6 @@ namespace Sinmai.UI
             }
 
 
-
-            AutoPlay.Opposite();
-            AutoPlay.RandomCycle();
-            AutoPlay.Force();
         }
 
         private void RenderMenu(int id)
@@ -59,12 +56,10 @@ namespace Sinmai.UI
                             Settings.LegitAutoPlayCheckBox = GUILayout.Toggle(Settings.LegitAutoPlayCheckBox, "Legit AutoPlay");
                             if (Settings.LegitAutoPlayCheckBox)
                             {
-                                Settings.LegitMethodInt =
-                                    GUILayout.SelectionGrid(Settings.LegitMethodInt, Settings.LegitMethod, 1);
+                                Settings.LegitMethodInt = GUILayout.SelectionGrid(Settings.LegitMethodInt, Settings.LegitMethod, 1);
                                 switch (Settings.LegitMethodInt)
                                 {
                                     case 0:
-                                    case 1:
                                         GUILayout.Label("Critical Value");
                                         Settings.CriticalValue = GUILayout.HorizontalScrollbar(Settings.CriticalValue, 1.0f, 0.0f, 100.0f);
                                         GUILayout.Label("Perfect Value");
@@ -76,17 +71,23 @@ namespace Sinmai.UI
                                         GUILayout.Label("Miss Value");
                                         Settings.MissValue = GUILayout.HorizontalScrollbar(Settings.MissValue, 1.0f, 0.0f, 100.0f);
                                         break;
-                                    case 2:
+                                    case 1:
                                         Settings.CriticalToggle = GUILayout.Toggle(Settings.CriticalToggle, "Critical");
                                         Settings.PerfectToggle = GUILayout.Toggle(Settings.PerfectToggle, "Perfect");
                                         Settings.GreatToggle = GUILayout.Toggle(Settings.GreatToggle, "Great");
                                         Settings.GoodToggle = GUILayout.Toggle(Settings.GoodToggle, "Good");
                                         Settings.MissToggle = GUILayout.Toggle(Settings.MissToggle, "Miss");
+                                        if (GUILayout.Button("Set"))
+                                        {
+                                            AutoPlay.FullRandom();
+                                        }
                                         break;
                                     default:
                                         break;
                                 }
                             }
+                            GameManager.AutoPlay = (GameManager.AutoPlayMode)GUILayout.Toolbar((int)GameManager.AutoPlay, System.Enum.GetNames(typeof(GameManager.AutoPlayMode)), GUILayout.ExpandWidth(true));
+                            
                             GUILayout.EndVertical();
                             break;
                         case 1:
