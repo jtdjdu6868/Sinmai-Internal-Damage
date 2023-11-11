@@ -332,7 +332,6 @@
     <Compile Include="Functions\AutoPlay.cs" />
     <Compile Include="Functions\Sounds.cs" />
     <Compile Include="Functions\Timer.cs" />
-    <Compile Include="Functions\Skins.cs" />
     <Compile Include="Functions\Track.cs" />
     <Compile Include="Functions\Version.cs" />
     <Compile Include="Loader.cs" />
