@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
+﻿using System.Reflection;
 using Manager;
 using Sinmai.Helper;
-using UnityEngine;
 
 namespace Sinmai.Functions
 {
@@ -13,18 +9,33 @@ namespace Sinmai.Functions
         private static readonly BindingFlags pBindFlags = BindingFlags.NonPublic;
         private static readonly BindingFlags iBindFlags = BindingFlags.Instance;
         private static readonly BindingFlags sBindFlags = BindingFlags.Static;
+        private static bool IsInfinityFreedomTime = false;
         public static void InfinityFreedomTime()
         {
-            if (!Settings.InfinityFreedomTimeCheckBox)
-                return;
+            if(Settings.InfinityFreedomTimeCheckBox && !IsInfinityFreedomTime)
+            {
+                PauseFreedomTimer();
+                IsInfinityFreedomTime = true;
+            }
+            else if(!Settings.InfinityFreedomTimeCheckBox && IsInfinityFreedomTime)
+            {
+                ResumeFreedomTimer();
+                IsInfinityFreedomTime = false;
+            }
+        }
+        public static void PauseFreedomTimer()
+        {
+            GameManager.PauseFreedomModeTimer(true);
 
             var gameManagerType = typeof(GameManager);
             var freedomTime = gameManagerType.GetField("_freedomTime", sBindFlags | pBindFlags);
 
-            freedomTime.SetValue(null, 6000000);
+            freedomTime.SetValue(null, 600000L);
+        }
 
-            // if (freedomTime != null)
-            //     Render.DrawString(new Vector2(200, 270), freedomTime.GetValue(null).ToString(), false);
+        public static void ResumeFreedomTimer()
+        {
+            GameManager.PauseFreedomModeTimer(false);
         }
 
         public static void InfinityPrepareTime()

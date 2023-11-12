@@ -35,7 +35,7 @@ namespace Sinmai.UI
                 Render.DrawString(new Vector2(0, draw_y + 45), Settings.log, false);
             }
 
-
+            Timer.InfinityFreedomTime();
         }
 
         private void RenderMenu(int id)
