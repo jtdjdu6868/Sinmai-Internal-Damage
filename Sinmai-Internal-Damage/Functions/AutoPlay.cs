@@ -52,7 +52,7 @@ namespace Sinmai.Functions
             }
             else
             {
-                return NoteJudge.ETiming.TooFast;
+                return NoteJudge.ETiming.TooLate;
             }
         }
     }
