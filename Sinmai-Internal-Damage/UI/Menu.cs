@@ -13,7 +13,7 @@ namespace Sinmai.UI
 
         private void Start()
         {
-            Window = new Rect(350, 100f, 300, 400);
+            Window = new Rect(780, (float)(Screen.height * 0.234375), 300, 400);
         }
 
         private void Update()
@@ -32,6 +32,7 @@ namespace Sinmai.UI
                 Render.DrawString(new Vector2(0, draw_y), "Sinmai-Internal-Damage", false);
                 Render.DrawString(new Vector2(0, draw_y + 15), $"Game Version: {Settings.GameVersion}", false);
                 Render.DrawString(new Vector2(0, draw_y + 30), $"Build: {Settings.Version}", false);
+                Render.DrawString(new Vector2(0, draw_y + 45), Settings.log, false);
             }
 
 
@@ -56,10 +57,10 @@ namespace Sinmai.UI
                             Settings.LegitAutoPlayCheckBox = GUILayout.Toggle(Settings.LegitAutoPlayCheckBox, "Legit AutoPlay");
                             if (Settings.LegitAutoPlayCheckBox)
                             {
-                                Settings.LegitMethodInt = GUILayout.SelectionGrid(Settings.LegitMethodInt, Settings.LegitMethod, 1);
+                                Settings.LegitMethodInt = (Settings.LegitMethod)GUILayout.SelectionGrid((int)Settings.LegitMethodInt, System.Enum.GetNames(typeof(Settings.LegitMethod)), 1);
                                 switch (Settings.LegitMethodInt)
                                 {
-                                    case 0:
+                                    case Settings.LegitMethod.Weighted:
                                         GUILayout.Label($"Critical Value ({Settings.CriticalValue})");
                                         Settings.CriticalValue = GUILayout.HorizontalScrollbar(Settings.CriticalValue, 1.0f, 0.0f, 100.0f);
                                         GUILayout.Label($"Perfect Value ({Settings.PerfectValue})");
@@ -75,8 +76,11 @@ namespace Sinmai.UI
                                         break;
                                 }
                             }
-                            GameManager.AutoPlay = (GameManager.AutoPlayMode)GUILayout.Toolbar((int)GameManager.AutoPlay, System.Enum.GetNames(typeof(GameManager.AutoPlayMode)));
 
+                            GUILayout.Label("Native AutoPlay");
+                            GameManager.AutoPlay = (GameManager.AutoPlayMode)GUILayout.Toolbar((int)GameManager.AutoPlay, System.Enum.GetNames(typeof(GameManager.AutoPlayMode)), GUILayout.Width(300));
+
+                            GUILayout.Label("Native Random");
                             GUILayout.BeginHorizontal();
                             Settings.CriticalToggle = GUILayout.Toggle(Settings.CriticalToggle, "Critical", GUILayout.Width(100));
                             Settings.PerfectToggle = GUILayout.Toggle(Settings.PerfectToggle, "Perfect", GUILayout.Width(100));
@@ -92,7 +96,7 @@ namespace Sinmai.UI
                             }
                             GUILayout.EndHorizontal();
 
-                            
+
                             GUILayout.EndVertical();
                             break;
                         case 1:

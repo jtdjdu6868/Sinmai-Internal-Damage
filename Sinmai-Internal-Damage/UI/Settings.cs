@@ -11,8 +11,11 @@
 
         // Legit Autoplay
         public static bool LegitAutoPlayCheckBox = false;
-        public static int LegitMethodInt = 0;
-        public static string[] LegitMethod = {"Weighted", "Native"};
+        public enum LegitMethod
+        {
+            Weighted
+        }
+        public static LegitMethod LegitMethodInt = LegitMethod.Weighted;
         public static float CriticalValue = 100.0f;
         public static float PerfectValue = 0.0f;
         public static float GreatValue = 0.0f;
@@ -21,14 +24,16 @@
 
         public static bool CriticalToggle = true;
         public static bool PerfectToggle = false;
-        public static bool GreatToggle = false;
-        public static bool GoodToggle = false;
-        public static bool MissToggle = false;
+        public static bool GreatToggle = true;
+        public static bool GoodToggle = true;
+        public static bool MissToggle = true;
 
 
         // Rage Autoplay
 
         // Some cool part idk
+
+        public static string log = "";
 
         // Misc
         public static bool InfinityFreedomTimeCheckBox = false;

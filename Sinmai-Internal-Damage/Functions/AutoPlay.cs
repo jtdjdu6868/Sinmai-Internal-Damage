@@ -15,7 +15,7 @@ namespace Sinmai.Functions
     {
         public static bool Prefix(ref NoteJudge.ETiming __result)
         {
-            if(Settings.LegitAutoPlayCheckBox && Settings.LegitMethodInt == 0)
+            if(Settings.LegitAutoPlayCheckBox && Settings.LegitMethodInt == Settings.LegitMethod.Weighted)
             {
                 __result = WeightedRamdom();
                 return false;
@@ -62,7 +62,7 @@ namespace Sinmai.Functions
     {
         public static void Postfix(ref bool __result)
         {
-            __result |= (Settings.LegitAutoPlayCheckBox && Settings.LegitMethodInt == 0);
+            __result |= (Settings.LegitAutoPlayCheckBox && Settings.LegitMethodInt == Settings.LegitMethod.Weighted);
         }
     }
     public class AutoPlay
