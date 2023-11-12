@@ -44,7 +44,7 @@ namespace Sinmai.UI
                 // Menu
                 case 0:
                     GUILayout.BeginVertical("MainToolbar", GUILayout.Height(20));
-                    Settings.MainToolbarInt = GUILayout.Toolbar(Settings.MainToolbarInt, Settings.MainToolbarStrings, GUILayout.Width(300), GUILayout.Height(20));
+                    Settings.MainToolbarInt = GUILayout.Toolbar(Settings.MainToolbarInt, Settings.MainToolbarStrings);
                     GUILayout.EndVertical();
 
                     switch (Settings.MainToolbarInt)
@@ -60,33 +60,38 @@ namespace Sinmai.UI
                                 switch (Settings.LegitMethodInt)
                                 {
                                     case 0:
-                                        GUILayout.Label("Critical Value");
+                                        GUILayout.Label($"Critical Value ({Settings.CriticalValue})");
                                         Settings.CriticalValue = GUILayout.HorizontalScrollbar(Settings.CriticalValue, 1.0f, 0.0f, 100.0f);
-                                        GUILayout.Label("Perfect Value");
+                                        GUILayout.Label($"Perfect Value ({Settings.PerfectValue})");
                                         Settings.PerfectValue = GUILayout.HorizontalScrollbar(Settings.PerfectValue, 1.0f, 0.0f, 100.0f);
-                                        GUILayout.Label("Great Value");
+                                        GUILayout.Label($"Great Value ({Settings.GreatValue})");
                                         Settings.GreatValue = GUILayout.HorizontalScrollbar(Settings.GreatValue, 1.0f, 0.0f, 100.0f);
-                                        GUILayout.Label("Good Value");
+                                        GUILayout.Label($"Good Value ({Settings.GoodValue})");
                                         Settings.GoodValue = GUILayout.HorizontalScrollbar(Settings.GoodValue, 1.0f, 0.0f, 100.0f);
-                                        GUILayout.Label("Miss Value");
+                                        GUILayout.Label($"Miss Value ({Settings.MissValue})");
                                         Settings.MissValue = GUILayout.HorizontalScrollbar(Settings.MissValue, 1.0f, 0.0f, 100.0f);
-                                        break;
-                                    case 1:
-                                        Settings.CriticalToggle = GUILayout.Toggle(Settings.CriticalToggle, "Critical");
-                                        Settings.PerfectToggle = GUILayout.Toggle(Settings.PerfectToggle, "Perfect");
-                                        Settings.GreatToggle = GUILayout.Toggle(Settings.GreatToggle, "Great");
-                                        Settings.GoodToggle = GUILayout.Toggle(Settings.GoodToggle, "Good");
-                                        Settings.MissToggle = GUILayout.Toggle(Settings.MissToggle, "Miss");
-                                        if (GUILayout.Button("Set"))
-                                        {
-                                            AutoPlay.FullRandom();
-                                        }
                                         break;
                                     default:
                                         break;
                                 }
                             }
-                            GameManager.AutoPlay = (GameManager.AutoPlayMode)GUILayout.Toolbar((int)GameManager.AutoPlay, System.Enum.GetNames(typeof(GameManager.AutoPlayMode)), GUILayout.ExpandWidth(true));
+                            GameManager.AutoPlay = (GameManager.AutoPlayMode)GUILayout.Toolbar((int)GameManager.AutoPlay, System.Enum.GetNames(typeof(GameManager.AutoPlayMode)));
+
+                            GUILayout.BeginHorizontal();
+                            Settings.CriticalToggle = GUILayout.Toggle(Settings.CriticalToggle, "Critical", GUILayout.Width(100));
+                            Settings.PerfectToggle = GUILayout.Toggle(Settings.PerfectToggle, "Perfect", GUILayout.Width(100));
+                            Settings.GreatToggle = GUILayout.Toggle(Settings.GreatToggle, "Great", GUILayout.Width(100));
+                            GUILayout.EndHorizontal();
+
+                            GUILayout.BeginHorizontal();
+                            Settings.GoodToggle = GUILayout.Toggle(Settings.GoodToggle, "Good", GUILayout.Width(100));
+                            Settings.MissToggle = GUILayout.Toggle(Settings.MissToggle, "Miss", GUILayout.Width(100));
+                            if (GUILayout.Button("Set", GUILayout.Width(100)))
+                            {
+                                AutoPlay.FullRandom();
+                            }
+                            GUILayout.EndHorizontal();
+
                             
                             GUILayout.EndVertical();
                             break;

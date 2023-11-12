@@ -22,6 +22,8 @@ namespace Sinmai
             Load.AddComponent<UI.Menu>();
 
             Object.DontDestroyOnLoad(Load);
+
+            AutoPlay.PatchAutoPlay();
             
             Sounds.InjectSound();
         }
