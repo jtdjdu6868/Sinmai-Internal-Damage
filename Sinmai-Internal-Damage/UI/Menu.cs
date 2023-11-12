@@ -105,10 +105,14 @@ namespace Sinmai.UI
                             GUILayout.Label("Misc");
                             Settings.InfinityFreedomTimeCheckBox = GUILayout.Toggle(Settings.InfinityFreedomTimeCheckBox, "Infinity FreedomTime");
                             Settings.InfinityPrepareTimeCheckBox = GUILayout.Toggle(Settings.InfinityPrepareTimeCheckBox, "Infinity PrepareTime");
+
+                            GUILayout.BeginHorizontal();
                             if (GUILayout.Button("Track Skip 1P"))
                                 Track.ForceTrackSkip(0);
                             if (GUILayout.Button("Track Skip 2P"))
                                 Track.ForceTrackSkip(1);
+                            GUILayout.EndHorizontal();
+
                             if (GUILayout.Button("Unload"))
                                 Loader.Unload();
                             GUILayout.EndVertical();
