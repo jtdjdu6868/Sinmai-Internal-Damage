@@ -4,7 +4,7 @@
 
 A no hook internal cheat for maimai でらっくす (Sinmai.exe) using Mono Injection born out of learning C#.
 
-Thanks to my pro internal game hack developer friend for helping me with this.
+Thanks to original credit.
 
 ## Compatibility
 
@@ -17,7 +17,7 @@ Thanks to my pro internal game hack developer friend for helping me with this.
 - 22000
 - 22500
 - 23000
-- 23500 (Not tested)
+- 23500
 
 ### Tested
 - SDEZ (maimai でらっくす)
@@ -46,19 +46,12 @@ Thanks to my pro internal game hack developer friend for helping me with this.
 
 - Legit
   - Legit AutoPlay
-    - Opposite
-    - Random Cycle
-    - Force Random
-- Rage (WIP)
-- Skin Changer
-  - DX Rating
-  - Udemae
-  - Icon
-  - Plate
-  - Title
-  - DX Pass 
+    - Weighted Random
+  - Native AutoPlay
+    - Native Random
 - Misc
   - Infinity FreedomTime
+  - Track Skip(1P/2P)
 
 ## Detection
 
@@ -72,9 +65,9 @@ Thanks to my pro internal game hack developer friend for helping me with this.
 - SEGA ALL.Net (Amusement Linkage Live Network)
 
 ## Credit / Useful Link
-
 * [A Beginner's Guide To Hacking Unity Games](https://www.unknowncheats.me/forum/unity/285864-beginners-guide-hacking-unity-games.html) - UnKnoWnCheaTs
 * [How can I invoke private methods with mono injected assembly](https://guidedhacking.com/threads/how-can-i-invoke-private-methods-with-mono-injected-assembly.14389/) - Guided Hacking
 * [LavaGang/MelonLoader](https://github.com/LavaGang/MelonLoader)
   * [sinai-dev/UnityExplorer](https://github.com/sinai-dev/UnityExplorer) for MelonLoader.Mono
 * [SharpMonoInjector v2.4 by wh0am15533](https://www.unknowncheats.me/forum/unity/408878-sharpmonoinjector-fixed-updated.html) - UnKnoWnCheaTs
+* [A fork version of SharpMonoInjector](https://github.com/jtdjdu6868/SharpMonoInjector)
